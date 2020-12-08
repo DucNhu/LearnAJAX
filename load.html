@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn AJAX B1 08/12</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#driver').click(function () {
+                $('#stage').load('data/result.html');
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <h2>Oh Shit, Click button => Load data from Server</h2>
+    <div id="stage">
+        Stage
+    </div>
+    <input type="button" id="driver" value="Load Data" />
+</body>
+
+</html>
