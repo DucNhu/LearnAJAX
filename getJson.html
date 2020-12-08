@@ -4,27 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn AJAX B2 08/12</title>
+    <title>Learn AJAX B2 08/12</title><!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+        // const btn = document.getElementsByTagName('button');
+        // const art = document.getElementsByName('article');
+
         $(document).ready(function () {
-            $("button").click(function () {
-                $.getJSON("https://jsonplaceholder.typicode.com/todos/1", function (result) {
-                    $("div").append("<b>userId: " + result.userId + "<br>" +
-                        "Id: " + result.id + "<br>" +
-                        "Title: " + result.title + "<br>" +
-                        "Completed: " + result.completed + "</b>"
-                    );
+            $('#getData').click(function () {
+                $.getJSON("https://localhost:44377/api/Festivals", function (result) {
+                    // $.each(result, function (key, fes) {
+                    //      $('article').append(
+                    //          '<img src="img/' + fes['img'] + '" alt="' + fes['img'] + '" />' +
+                    //          'Name:' + fes['NameNav'] 
+                    //      );
+                    // });
+
+                    $.each(result, function (index, fes) {
+                        $('article').append(
+                            '<div class="card" style="width: 18rem;">' +
+                            '<img src="img/' + fes.img +
+                            '" alt="' + fes.img + '" class="card-img-top" /> <div class="card-body">' +
+                            '<p class="card-text">' + fes.description + '</p> </div> </div>'
+                        )
+                    })
+
                 });
             });
         });
     </script>
 </head>
 
-<body>
-    <button>Get JSON data</button>
-
-    <div></div>
+<body class="p-5">
+    <button type="button" class="btn btn-outline-success m-4" id="getData">Get Data</button>
+    <article></article>
 </body>
 
 </html>
